@@ -1,10 +1,21 @@
 class MultiHost < ActiveRecord::Base
 
 
-  validates :full_hostname, format: { with: URI.regexp }
+  validates :full_hostname, format: { with: URI.regexp }, uniqueness: true
 
-  before_save :extract_full_hostname_parts
+  before_save :extract_full_hostname_parts, :check_for_default
 
+
+  private
+
+  def check_for_default
+    current_default = self.class.find_by(is_default: true)
+
+    if current_default && is_default? && current_default != self
+      self.errors.add(:is_default, 'only one default allowed')
+      return false
+    end
+  end
 
   def extract_full_hostname_parts
     begin
