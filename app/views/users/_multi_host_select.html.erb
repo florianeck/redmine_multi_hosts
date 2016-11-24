@@ -1,0 +1,1 @@
+<p><%= form.select :multi_host_id, MultiHost.all.map {|h| [h.full_hostname, h.id]}, include_blank: true %></p>
