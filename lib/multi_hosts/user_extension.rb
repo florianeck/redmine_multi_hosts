@@ -9,7 +9,7 @@ module MultiHosts
 
 
     def default_host_user?
-      self.multi_host.try(:is_default?)
+      self.multi_host.nil? || self.multi_host.try(:is_default?)
     end
 
     def non_default_host_user?
