@@ -29,6 +29,7 @@ class MultiHost < ActiveRecord::Base
       # is actually the sub uri, but ActionMailer#default_host_options calls it 'script_name'
       # ignoring root path ('/') or blank ('')
       self.script_name  = uri.path if uri.path.size >= 2
+      self.internal_name = self.host.gsub('www.', '').gsub('.', '-').parameterize
     rescue Exception => e
       self.errors.add(:full_hostname, 'invalid host name')
       return false

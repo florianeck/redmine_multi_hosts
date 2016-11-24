@@ -8,8 +8,10 @@ end
 require "multi_hosts/mailer_extension"
 require "multi_hosts/user_extension"
 require "multi_hosts/hooks"
+require "multi_hosts/detect_host"
 
 Rails.application.config.after_initialize do
   Mailer.send(:include, MultiHosts::MailerExtension)
   User.send(:include, MultiHosts::UserExtension)
+  ApplicationController.send(:include, MultiHosts::DetectHost)
 end

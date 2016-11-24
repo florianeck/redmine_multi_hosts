@@ -8,6 +8,7 @@ class CreateMultiHosts < ActiveRecord::Migration
       t.integer :port
       t.string  :script_name
       t.boolean :is_default
+      t.string  :internal_name
       t.timestamps
     end
 
