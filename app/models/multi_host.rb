@@ -5,6 +5,9 @@ class MultiHost < ActiveRecord::Base
 
   before_save :extract_full_hostname_parts, :check_for_default
 
+  def self.default
+    find_by(is_default: true) || raise("Please run rake multi_hosts:setup_default_host to setup default data")
+  end
 
   private
 

@@ -6,7 +6,9 @@ Redmine::Plugin.register :multi_hosts do
 end
 
 require "multi_hosts/mailer_extension"
+require "multi_hosts/user_extension"
 
 Rails.application.config.after_initialize do
   Mailer.send(:include, MultiHosts::MailerExtension)
+  User.send(:include, MultiHosts::UserExtension)
 end
