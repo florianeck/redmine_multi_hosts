@@ -8,6 +8,9 @@ Also custom styles for different host names can be applied
 Running the same Redmine installation under multiple hosts (e.g. via ReverseProxy).
 This nmight happen when customers should get a customized login to the Redmine System
 
+## Adding Hostnames
+Just run `rake multi_hosts:add_host[http://www.exmple.com/]` to add a new host.
+
 ## Caveats
 As Redmine uses the BCC field to send an email to multiple recipients, mixups between users/hostnames might happen.
 The plugin always uses the first found hostname if the are any users included in the recipients list that have a custom host.
