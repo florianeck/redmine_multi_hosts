@@ -1,5 +1,5 @@
-Redmine::Plugin.register :multi_hosts do
-  name 'AutoDeputy'
+Redmine::Plugin.register :redmine_multi_hosts do
+  name 'Redmine MultiHosts'
   author 'Florian Eck for akquinet'
   description 'Allow to use one Redmine installation with multiple hosts via reverse proxy'
   version '1.0'
