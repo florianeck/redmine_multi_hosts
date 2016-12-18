@@ -14,7 +14,12 @@ require "multi_hosts/multi_hosts_helper"
 Rails.application.config.after_initialize do
   Mailer.send(:include, MultiHosts::MailerExtension)
   User.send(:include, MultiHosts::UserExtension)
+
   ApplicationController.send(:include, MultiHosts::DetectHost)
+  AccountController.send(:include, MultiHosts::RegisterWithHostname)
+
+
+
   ApplicationHelper.module_eval do
     def html_title(*args)
 
