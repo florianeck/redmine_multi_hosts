@@ -52,3 +52,4 @@ build-iPhoneSimulator/
 vendor/public/stylesheets/*.css
 vendor/public/images/*
 !vendor/public/stylesheets/example.css
+!vendor/public/images/.keep
