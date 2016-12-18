@@ -12,6 +12,7 @@ This nmight happen when customers should get a customized login to the Redmine S
 
 - Run `rake redmine:plugins:migrate` to setup the tables and add a column `multi host_id` to users table
 - Run `rake multi_hosts:setup_default_host`
+- Run `rake multi_hosts:setup_stylesheets` to setup the custom stylesheets for the existing hostnames.
 
 
 ## Adding Hostnames
