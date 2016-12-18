@@ -10,7 +10,7 @@ module MultiHosts
 
     def detect_multi_host
       if session[:current_multi_host_name].nil?
-        @current_multihost = MultiHost.find_by(host: request.env['REMOTE_HOST'])
+        @current_multihost = MultiHost.find_by(host: request.env['HTTP_HOST'])
         if @current_multihost.nil?
           session[:current_multi_host_name] = 'unknown'
         elsif @current_multihost.is_default?
