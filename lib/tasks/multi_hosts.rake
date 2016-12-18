@@ -26,4 +26,20 @@ namespace :multi_hosts do
     end
   end
 
+  desc "setup for stylessheets"
+  task :setup_stylesheets => :environment do
+
+    # setup symlink
+    %x(ln -sf #{Rails.root}/plugins/redmine_multi_hosts/vendor/public/stylesheets #{Rails.root}/public/stylesheets/multi_hosts)
+    %x(ln -sf #{Rails.root}/plugins/redmine_multi_hosts/vendor/public/images #{Rails.root}/public/images/multi_hosts)
+
+    # Create stylesheets
+    MultiHost.all.each do |h|
+      unless File.exists?("#{Rails.root}/plugins/redmine_multi_hosts/vendor/public/stylesheets/#{h.internal_name}.css")
+        FileUtils.cp("#{Rails.root}/plugins/redmine_multi_hosts/vendor/public/stylesheets/example.css", "#{Rails.root}/plugins/redmine_multi_hosts/vendor/public/stylesheets/#{h.internal_name}.css")
+      end
+    end
+
+  end
+
 end
