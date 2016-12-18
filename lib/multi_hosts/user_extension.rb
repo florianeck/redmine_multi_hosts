@@ -5,6 +5,7 @@ module MultiHosts
 
     included do
       belongs_to :multi_host
+      User.safe_attributes(:multi_host_id)
     end
 
 
