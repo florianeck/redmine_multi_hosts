@@ -49,7 +49,7 @@ build-iPhoneSimulator/
 # unless supporting rvm < 1.11.0 or doing something fancy, ignore this:
 .rvmrc
 
-vendor/public/stylesheets/*.css
-vendor/public/images/*
-!vendor/public/stylesheets/example.css
-!vendor/public/images/.keep
+assets/stylesheets/*.css
+assets/images/*
+!assets/stylesheets/example.css
+!assets/images/.keep
