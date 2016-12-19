@@ -1,3 +1,3 @@
 <% if session[:current_multi_host_name].present? && session[:current_multi_host_name] != 'unknown' && session[:current_multi_host_name] != 'default' %>
-  <%= stylesheet_link_tag "multi_hosts/#{session[:current_multi_host_name]}" %>
+  <%= stylesheet_link_tag "/plugin_assets/redmine_multi_hosts/#{session[:current_multi_host_name]}" %>
 <% end %>

@@ -1,0 +1,22 @@
+// Example Style Sheet to customize the default theme of easy redmine
+
+// Background Color of main navigation bar
+#top-menu { background-color: #e95420; }
+
+// Logo in the main Navigation Bar
+#top-menu #logo a { background-image: url("http://pathtoyourimage"); }
+
+// Color of links
+a { color: #e95420;}
+
+// Background for the Login screen
+body.action-login #wrapper {
+  background: #fff url("http://pathtoyourimage") center center no-repeat;
+  background-size: 100% auto;
+}
+
+// Background for the centered login form
+body.action-login #wrapper2 {
+  border: solid 1px #ffffff;
+  background: rgba(255, 166, 0, 0.83);
+}
