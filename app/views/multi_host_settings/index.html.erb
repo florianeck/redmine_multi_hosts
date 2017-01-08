@@ -11,7 +11,7 @@
       <thead>
         <tr>
           <% attributes_list.each do |a| %>
-            <th><%= MultiHost.human_attribute_name(a) %></th>
+            <th><%= t("field_#{a}") %></th>
           <% end %>
         </tr>
       </thead>
@@ -19,7 +19,7 @@
   <% @multi_hosts.each do |host| %>
     <tr id="multi-host-<%= host.id %>" class="<%= cycle 'odd', 'even' %> <%= "builtin" if host.is_default? %>">
       <% attributes_list.each do |a| %>
-        <th><%= link_to_if (a == 'full_hostname' && !host.is_default?), host.send(a), edit_multi_host_setting_path(a) %></th>
+        <td><%= link_to_if (a == 'full_hostname' && !host.is_default?), host.send(a), edit_multi_host_setting_path(host) %></td>
       <% end %>
     </tr>
   <% end %>
