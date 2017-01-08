@@ -1,0 +1,30 @@
+<div class="contextual">
+<%#= link_to l(:label_group_new), new_group_path, :class => 'icon icon-add' %>
+</div>
+
+<%= title l(:multi_hosts) %>
+<% attributes_list = %w(full_hostname protocol host port is_default internal_name default_mail_from app_title default_group_name) %>
+<% attributes_list << 'default_easy_user_type_name' if defined?(EasyUserType) %>
+
+<% if @multi_hosts.any? %>
+  <table class="list groups">
+      <thead>
+        <tr>
+          <% attributes_list.each do |a| %>
+            <th><%= MultiHost.human_attribute_name(a) %></th>
+          <% end %>
+        </tr>
+      </thead>
+    <tbody>
+  <% @multi_hosts.each do |host| %>
+    <tr id="multi-host-<%= host.id %>" class="<%= cycle 'odd', 'even' %> <%= "builtin" if host.is_default? %>">
+      <% attributes_list.each do |a| %>
+        <th><%= link_to_if (a == 'full_hostname' && !host.is_default?), host.send(a), edit_multi_host_setting_path(a) %></th>
+      <% end %>
+    </tr>
+  <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p class="nodata"><%= l(:label_no_data) %></p>
+<% end %>

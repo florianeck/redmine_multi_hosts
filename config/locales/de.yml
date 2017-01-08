@@ -1,2 +1,16 @@
 de:
   field_multi_host: Hostname
+  multi_hosts: MultiHosts
+  activerecord:
+    attributes:
+      multi_host:
+        full_hostname: Voller Hostname
+        protocol: Protokoll
+        host: Host
+        port: Port
+        is_default: Standard?
+        internal_name: Interner Name
+        default_mail_from: Standardabsender
+        app_title: Applikationstitel
+        default_group_name: Standardgruppe
+        default_easy_user_type: Standard EasyUserType
