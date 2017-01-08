@@ -17,11 +17,22 @@ module MultiHosts
           message.from = user_multi_host.default_mail_from
         end
 
+        if user_multi_host.app_title.present?
+          message.subject = message.subject.gsub(Setting.app_title, user_multi_host.app_title)
+        end
+
         binding.pry
 
         [:html_part, :text_part].each do |partname|
           mcontent = message.send(partname).body.raw_source
-          message.send(partname).body.raw_source.replace(mcontent.gsub(default_host, target_host))
+          mcontent.gsub!(default_host, target_host)
+
+          if user_multi_host.app_title.present?
+            mcontent.gsub!(Setting.app_title, user_multi_host.app_title)
+          end
+
+
+          message.send(partname).body.raw_source.replace(mcontent)
         end
       end
     end
