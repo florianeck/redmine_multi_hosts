@@ -6,6 +6,8 @@ class MultiHost < ActiveRecord::Base
 
   belongs_to :default_group, :class_name => "Group", :foreign_key => "default_group_id"
 
+  EDITABLE_ATTRIBUTES = %w(internal_name default_mail_from app_title default_group_id default_easy_user_type_id)
+
   if defined?(EasyUserType)
     belongs_to :default_easy_user_type, :class_name => "EasyUserType", :foreign_key => "default_easy_user_type_id"
   end

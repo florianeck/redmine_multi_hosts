@@ -1,6 +1,6 @@
 <%= title t("edit_multi_host", name: @multi_host.full_hostname)  %>
 
-<%= labelled_form_for :multi_host, @multi_host, :url => multi_host_settings_path(@multi_host), :html => {:method => :put} do |f| %>
+<%= labelled_form_for :multi_host, @multi_host, :url => multi_host_setting_path(@multi_host), :html => {:method => :put} do |f| %>
   <%= error_messages_for 'multi_host' %>
 
   <div class="box tabular">
@@ -12,7 +12,6 @@
     <% if defined?(EasyUserType) %>
       <p><%= f.select :default_easy_user_type_id, EasyUserType.all.map {|g| [g.name, g.id]}, include_blank: true %></p>
     <% end %>
-
   </div>
 
   <%= submit_tag l(:button_save) %>
