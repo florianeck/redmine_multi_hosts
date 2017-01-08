@@ -20,7 +20,17 @@ module MultiHosts
       @current_multihost = MultiHost.find_by(host: request.env['HTTP_HOST'])
 
       if @user && @user.persisted? && @current_multihost
-        @user.update_column(:multi_host_id, @current_multihost.id)
+        user_host_attributes = {multi_host_id: @current_multihost.id}
+
+        if @current_multihost.default_group
+          @current_multihost.default_group << @user
+        end
+
+        if User.column_names.include?('easy_user_type_id')
+          user_host_attributes[:easy_user_type_id] = @current_multihost.default_easy_user_type_id
+        end
+
+        @user.update_attributes(user_host_attributes)
       end
     end
   end

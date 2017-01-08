@@ -11,6 +11,13 @@ require "multi_hosts/hooks"
 require "multi_hosts/detect_host"
 require "multi_hosts/multi_hosts_helper"
 
+begin
+  EasyUserType
+rescue Exception
+  # call EasyUserType to make shure its defined?
+end
+
+
 Rails.application.config.after_initialize do
   Mailer.send(:include, MultiHosts::MailerExtension)
   User.send(:include, MultiHosts::UserExtension)
