@@ -16,7 +16,7 @@ module MultiHosts
         elsif @current_multihost.is_default?
           session[:current_multi_host_name] = 'default'
         else
-          session[:current_multi_host_name] = @current_multihost.internal_name
+          session[:current_multi_host_name] = Thread.current[:current_multi_host_name] = @current_multihost.internal_name
         end
       end
     end

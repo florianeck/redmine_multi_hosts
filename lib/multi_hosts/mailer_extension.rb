@@ -8,14 +8,16 @@ module MultiHosts
     end
 
     def set_multi_host_urls
-      if non_default_host_user_present?
+      if non_default_host_user_present? || Thread.current[:current_multi_host]
         default_host = MultiHost.default.full_hostname
-        user_multi_host = non_default_host_users.first.multi_host
+        user_multi_host = Thread.current[:current_multi_host] || non_default_host_users.first.multi_host
         target_host  = user_multi_host.full_hostname
 
         if user_multi_host.default_mail_from.present?
           message.from = user_multi_host.default_mail_from
         end
+
+        binding.pry
 
         [:html_part, :text_part].each do |partname|
           mcontent = message.send(partname).body.raw_source
