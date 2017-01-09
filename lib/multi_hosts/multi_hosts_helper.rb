@@ -1,7 +1,6 @@
 module MultiHostsHelper
 
   def html_title(*args)
-    binding.pry
     app_title = @current_multihost.try(:app_title) || Setting.app_title
     if args.empty?
       title = @html_title || []

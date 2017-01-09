@@ -22,8 +22,10 @@ module MultiHosts
       if @user && @user.persisted? && @current_multihost
         user_host_attributes = {multi_host_id: @current_multihost.id}
 
+
+
         if @current_multihost.default_group
-          @current_multihost.default_group << @user
+          @current_multihost.default_group.users << @user
         end
 
         if User.column_names.include?('easy_user_type_id')
