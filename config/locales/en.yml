@@ -1,2 +1,16 @@
-de:
+en:
   field_multi_host: Hostname
+  multi_hosts: MultiHosts
+  edit_multi_host: Edit %{name}
+  field_full_hostname: Full hostname
+  field_protocol: Protocol
+  field_host: Host
+  field_port: Port
+  field_is_default: Default?
+  field_internal_name: Internal Name
+  field_default_mail_from: Default Mail From
+  field_app_title: App Title
+  field_default_group_name: Default Group
+  field_default_group: Default Group
+  field_default_easy_user_type: Default EasyUserType
+  field_default_easy_user_type_name: Default EasyUserType

@@ -21,8 +21,6 @@ module MultiHosts
           message.subject = message.subject.gsub(Setting.app_title, user_multi_host.app_title)
         end
 
-        binding.pry
-
         [:html_part, :text_part].each do |partname|
           mcontent = message.send(partname).body.raw_source
           mcontent.gsub!(default_host, target_host)
@@ -30,7 +28,6 @@ module MultiHosts
           if user_multi_host.app_title.present?
             mcontent.gsub!(Setting.app_title, user_multi_host.app_title)
           end
-
 
           message.send(partname).body.raw_source.replace(mcontent)
         end

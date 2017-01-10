@@ -1,12 +1,27 @@
 class MultiHost < ActiveRecord::Base
 
-
   validates :full_hostname, format: { with: URI.regexp }, uniqueness: true
 
   before_save :extract_full_hostname_parts, :check_for_default
 
+  belongs_to :default_group, :class_name => "Group", :foreign_key => "default_group_id"
+
+  EDITABLE_ATTRIBUTES = %w(internal_name default_mail_from app_title default_group_id default_easy_user_type_id)
+
+  if defined?(EasyUserType)
+    belongs_to :default_easy_user_type, :class_name => "EasyUserType", :foreign_key => "default_easy_user_type_id"
+  end
+
   def self.default
     find_by(is_default: true) || raise("Please run rake multi_hosts:setup_default_host to setup default data")
+  end
+
+  def default_group_name
+    default_group.try(:name)
+  end
+
+  def default_easy_user_type_name
+    defined?(EasyUserType) ? default_easy_user_type.try(:name) : nil
   end
 
   private
