@@ -3,8 +3,8 @@ module MultiHosts
     extend ActiveSupport::Concern
 
     included do
-      before_filter :store_multi_host_name_for_thread, only: :register
-      after_filter :set_user_multihost_id, only: :register
+      before_action :store_multi_host_name_for_thread, only: :register
+      after_action :set_user_multihost_id, only: :register
     end
 
     private

@@ -1,4 +1,4 @@
-class AddTitleAndEmailAdress < ActiveRecord::Migration
+class AddTitleAndEmailAdress < ActiveRecord::Migration[4.2]
 
   def change
     add_column :multi_hosts, :default_mail_from, :string
