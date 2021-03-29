@@ -3,7 +3,7 @@ module MultiHosts
     extend ActiveSupport::Concern
 
     included do
-      before_filter :detect_multi_host
+      before_action :detect_multi_host
     end
 
     private

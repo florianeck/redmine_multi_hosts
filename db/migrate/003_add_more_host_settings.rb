@@ -1,4 +1,4 @@
-class AddMoreHostSettings < ActiveRecord::Migration
+class AddMoreHostSettings < ActiveRecord::Migration[4.2]
 
   def change
     add_column :multi_hosts, :default_group_id, :integer
